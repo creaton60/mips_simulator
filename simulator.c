@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
         advance_pc(4, "nop");
 
         // Output registers
-        output();
+        output(argv[1]);
 
         // Dealloc .data
         free(memory);
@@ -323,7 +323,8 @@ void advance_pc(int step, char *instruction) {
 }
 
 // Output reigsters
-void output() {
+void output(char *readFile) {
+    printf("mips-sim > read %s\n", readFile);
     printf("1	$zero		0x%08x\n", registers[0]);
     printf("2	$at		0x%08x\n", registers[1]);
     printf("3	$v0		0x%08x\n", registers[2]);
@@ -353,4 +354,5 @@ void output() {
     printf("27	$k0		0x%08x\n", registers[26]);
     printf("28	$k1		0x%08x\n", registers[27]);
     printf("29	pc		0x%08x\n", pc);
+    printf("mips-sim > exit");
 }
